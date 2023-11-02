@@ -1,5 +1,5 @@
 {
-  "name": "eslint-config-modern",
+  "name": "eslint-modern",
   "version": "1.0.2",
   "description": "Modern ESLint config for Next.js, MUI and React",
   "main": "index.js",
