@@ -1,12 +1,36 @@
 {
-  "name": "eslint-modern",
-  "version": "1.0.3",
-  "description": "Modern ESLint config for Next.js, MUI and React",
+  "name": "eslint-config-nextjs-nos",
+  "version": "1.0.1",
+  "description": "ESLint and Prettier Config from Srijan Srivastava",
+  "keywords": [
+    "javascript",
+    "typescript",
+    "ecmascript",
+    "eslint",
+    "eslint-config",
+    "lint",
+    "config",
+    "prettier"
+  ],
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/SrivastavaSrijan/eslint-modern.git"
   },
-  "devDependencies": {
+  "author": "Srijan Srivastava <srijan.srivastava35@gmail.com>",
+  "license": "MIT",
+  "peerDependencies": {
+    "eslint": "^8.52.0",
+    "prettier": "^3.0.3",
+    "typescript": "^5.2.2"
+  },
+  "eslintConfig": {
+    "extends": [
+      "./.eslintrc.js"
+    ]
+  },
+  "dependencies": {
+    "@rushstack/eslint-patch": "^1.5.1",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-airbnb-typescript": "^17.0.0",
     "eslint-config-prettier": "^9.0.0",
@@ -17,24 +41,17 @@
     "eslint-plugin-simple-import-sort": "^10.0.0",
     "eslint-plugin-tailwindcss": "^3.13.0",
     "eslint-plugin-unused-imports": "^3.0.0",
-    "prettier": "^3.0.3",
     "prettier-eslint": "^16.1.1",
     "@typescript-eslint/eslint-plugin": "^6.9.0",
     "@typescript-eslint/parser": "^6.9.0",
     "eslint-config-next": "14.0.1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/SrivastavaSrijan/eslint-modern.git"
+  "scripts": {
+    "lint": "eslint .",
+    "lint:fix": "eslint --fix",
+    "bump:beta": "npm version prerelease --preid beta",
+    "publish:beta": "npm publish --tag beta"
   },
-  "keywords": [
-    "eslint",
-    "react",
-    "next.js",
-    "mui"
-  ],
-  "author": "Srijan Srivastava",
-  "license": "ISC",
   "bugs": {
     "url": "https://github.com/SrivastavaSrijan/eslint-modern/issues"
   },
