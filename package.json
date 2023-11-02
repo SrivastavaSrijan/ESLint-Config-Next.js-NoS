@@ -1,12 +1,12 @@
 {
-  "name": "eslint-modern",
-  "version": "1.0.1",
+  "name": "eslint-config-modern",
+  "version": "1.0.2",
   "description": "Modern ESLint config for Next.js, MUI and React",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "peerDependencies": {
+  "dependencies": {
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-airbnb-typescript": "^17.0.0",
     "eslint-config-prettier": "^9.0.0",
