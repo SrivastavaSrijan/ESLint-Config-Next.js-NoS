@@ -1,78 +1,58 @@
-# No-Sweat™ Eslint and Prettier Setup
+# NoS™ ESLint and Prettier Setup
 
-These are my settings for ESLint and Prettier
-
-You might like them - or you might not. Don't worry you can always change them.
+These are my customized settings for ESLint and Prettier, tailored to your specific needs.
 
 ## What it does
 
 - Lints JavaScript and TypeScript based on the latest standards
 - Fixes issues and formatting errors with Prettier
-- Lints + Fixes inside of html script tags
-- Lints + Fixes React via eslint-config-airbnb
-- You can see all the [rules here](https://github.com/wesbos/eslint-config-wesbos/blob/master/.eslintrc.js) - these generally abide by the code written in my courses. You are very welcome to overwrite any of these settings, or just fork the entire thing to create your own.
+- Lints + Fixes inside of HTML script tags
+- Lints + Fixes React using eslint-config-airbnb and eslint-config-next
+- You can see all the [rules here](https://github.com/wesbos/eslint-config-wesbos/blob/master/.eslintrc.js) - these align with your coding preferences, but you can customize them further.
 
 ## Project Install
 
 It's recommended you install this once per every project. ESLint used to have global configs, but no longer.
 
-<!-- TODO: Make an updated Youtube video -->
-
 1. If you don't already have a `package.json` file, create one with `npm init -y`.
 
-2. Then we need to install this config
+2. Install your customized ESLint config:
 
+```bash
+npm install ESLint Config Next.s - NoS
 ```
-npm install eslint-config-wesbos
-```
 
-4. We need to put our eslint settings in a file in the root of your project. I prefer to use our existing `package.json`, and add an `eslintConfig` property. You can also create a new `.eslintrc` or `.eslintrc.js` file that lives where package.json does:
-
-**in package.json**, add this anywhere top level. Like right under your "scripts" object.
+3. Configure ESLint settings in your `package.json` file under the "eslintConfig" property:
 
 ```json
 "eslintConfig": {
-  "extends": ["wesbos"]
+  "extends": ["ESLint Config Next.s - NoS"]
 }
 ```
 
-Or put this in a `.eslintrc` file
+4. For TypeScript projects, update the extends to use `ESLint Config Next.s - NoS/typescript`.
 
-```json
-{
-  "extends": ["wesbos"]
-}
-```
+5. TypeScript users will also need a `tsconfig.json` file in their project. An empty object (`{}`) or [your base config](https://github.com/wesbos/dotfiles/blob/master/tsconfig.json) will do!
 
-For TypeScript projects, use `wesbos/typescript`.
-
-```json
-{
-  "extends": ["wesbos/typescript"]
-}
-```
-
-TypeScript users will also need a `tsconfig.json` file in their project. An empty object (`{}`) or [my base](https://github.com/wesbos/dotfiles/blob/master/tsconfig.json) will do!
-
-5. You can add two scripts to your package.json to lint and/or fix:
+6. Add two scripts to your package.json for linting and fixing:
 
 ```json
 "scripts": {
   "lint": "eslint .",
   "lint:fix": "eslint . --fix"
-},
+}
 ```
 
-6. Now you can manually lint your code by running `npm run lint` and fix all fixable issues with `npm run lint:fix`. You probably want your editor to do this though.
+7. You can manually lint your code by running `npm run lint` and fix issues with `npm run lint:fix`. However, it's recommended to configure your code editor for automatic linting and fixing.
 
 ## Settings
 
-If you'd like to overwrite eslint or prettier settings, you can add the rules in your `.eslintrc` file. The [ESLint rules](https://eslint.org/docs/rules/) go directly under `"rules"`.
+If you'd like to override ESLint or Prettier settings, you can add rules in your `.eslintrc` file. The [ESLint rules](https://eslint.org/docs/rules/) go directly under `"rules"`.
 
-```js
+```json
 {
   "extends": [
-    "wesbos"
+    "ESLint Config Next.s - NoS"
   ],
   "rules": {
     "no-console": 2,
@@ -82,11 +62,9 @@ If you'd like to overwrite eslint or prettier settings, you can add the rules in
 
 ### Prettier Rules
 
-There are only 2 prettier rules included in my config - `singleQuote: true` and `endOfLine: 'auto'`.
+Your customized Prettier settings include `singleQuote: true` and `endOfLine: 'auto'`. If you want additional [Prettier options](https://prettier.io/docs/en/options.html), create a `.prettierrc` file in your project's root directory:
 
-If you want custom [prettier options](https://prettier.io/docs/en/options.html), it's recommended to create a `.prettierrc` file in your root directory like so:
-
-```js
+```json
 {
   "singleQuote": true,
   "endOfLine": "auto",
@@ -94,13 +72,13 @@ If you want custom [prettier options](https://prettier.io/docs/en/options.html),
 }
 ```
 
-You can also put this in your EsLint config as a rule like so:
+You can also include these settings in your ESLint config as a rule:
 
 ```json
 {
-  "extends": ["wesbos"],
+  "extends": ["ESLint Config Next.s - NoS"],
   "rules": {
-    ... any eslint rules here
+    ... any ESLint rules here
     "prettier/prettier": [
       "error",
       {
@@ -113,108 +91,91 @@ You can also put this in your EsLint config as a rule like so:
 }
 ```
 
-Note if you are switching to double quotes, you'll also need to add this eslint rule, or they will fight to the death!
+Note: If you switch to double quotes, add this ESLint rule to avoid conflicts:
 
-```js
-quotes: ["error", "double"];
+```json
+"quotes": ["error", "double"]
 ```
 
-## With VS Code
+## Integrating with VS Code
 
-You should read this entire thing. Serious!
+Here are the instructions for setting up ESLint and Prettier in Visual Studio Code (VS Code):
 
-Once you have done one, or both, of the above installs. You probably want your editor to lint and fix for you. Here are the instructions for VS Code:
+1. Install the [ESLint package](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) for VS Code.
 
-1. Install the [ESLint package](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
-2. Now we need to setup some VS Code settings via `Code/File` → `Preferences` → `Settings`. It's easier to enter these settings while editing the `settings.json` file, so click the Open (Open Settings) icon in the top right corner:
+2. Configure VS Code settings for ESLint and Prettier by opening the settings.json file:
 
-```js
+```json
 // These are all my auto-save configs
 "editor.formatOnSave": true,
-// turn it off for JS and JSX, we will do this via eslint
+// Turn it off for JS and JSX, ESLint will handle this
 "[javascript][javascriptreact][typescript][typescriptreact]": {
   "editor.formatOnSave": false
 },
-// tell the ESLint plugin to run on save
+// Tell the ESLint plugin to run on save
 "editor.codeActionsOnSave": {
   "source.fixAll.eslint": true
-},
+}
 ```
 
-After attempting to lint your file for the first time, you may need to click on 'ESLint' in the bottom right and select 'Allow Everywhere' in the alert window.
+After attempting to lint your file for the first time, you may need to click on 'ESLint' in the bottom right corner and select 'Allow Everywhere' in the alert window. Restart VS Code if necessary.
 
-Finally you'll usually need to restart VS code. They say you don't need to, but it's never worked for me until I restart.
+## Using with Create React App
 
-## With Create React App
+1. Run `npx install-peerdeps --dev ESLint Config Next.s - NoS`
 
-1. Run `npx install-peerdeps --dev eslint-config-wesbos`
-1. Crack open your `package.json` and replace `"extends": "react-app"` with `"extends": "wesbos"`
+2. Update your `package.json` to use the customized ESLint config:
 
-## With Gatsby
+```json
+"extends": ["ESLint Config Next.s - NoS"]
+```
 
-1. Run `npx install-peerdeps --dev eslint-config-wesbos`
-1. follow the `Local / Per Project Install` steps above
+## Using with Gatsby
 
-## With WSL
+1. Run `npx install-peerdeps --dev ESLint Config Next.s - NoS`
+
+2. Follow the "Local / Per Project Install" steps above.
+
+## Using with WSL
 
 It should work as above.
 
-## With JetBrains Products (IntelliJ IDEA, WebStorm, RubyMine, PyCharm, PhpStorm, etc)
+## Using with JetBrains Products (IntelliJ IDEA, WebStorm, RubyMine, PyCharm, PhpStorm, etc)
 
-If you have previously configured ESLint to run via a File Watcher, [turn that off.](https://www.jetbrains.com/help/idea/using-file-watchers.html#enableFileWatcher)
+If you're using JetBrains products, follow these steps:
 
-### If you choose Local / Per Project Install Above
+### If You Choose Local / Per Project Install Above
 
-1. Open ESLint configuration by going to File > Settings (Edit > Preferences on Mac) > Languages & Frameworks > Code Quality Tools > ESLint (optionally just search settings for "eslint")
-1. Select **Automatic ESLint Configuration**
-1. Check **Run eslint --fix on save**
+1. Open ESLint configuration by going to File > Settings (Edit > Preferences on Mac) > Languages & Frameworks > Code Quality Tools > ESLint (or search settings for "eslint").
 
-### If you choose Global Install
+2. Select **Automatic ESLint Configuration**.
 
-The following steps are for a typical Node / ESLint global installtion. If you have a customized setup, refer to JetBrains docs for more [ESLint Configuration Options](https://www.jetbrains.com/help/webstorm/eslint.html#ws_js_eslint_manual_configuration).
+3. Check **Run eslint --fix on save**.
 
-1. Open ESLint configuration by going to File > Settings (Edit > Preferences on Mac) > Languages & Frameworks > Code Quality Tools > ESLint (optionally just search settings for "eslint")
-1. Select **Manual ESLint configuration**
-1. Choose your **Node interpreter** from the detected installations
-1. Select the global **ESLint package** from the dropdown
-1. Leave Configuration File as **Automatic Search**
-1. Check **Run eslint --fix on save**
+### If You Choose Global Install
+
+Follow these steps for a typical Node / ESLint global installation:
+
+1. Open ESLint configuration by going to File > Settings (Edit > Preferences on Mac) > Languages & Frameworks > Code Quality Tools > ESLint (or search settings for "eslint").
+
+2. Select **Manual ESLint configuration**.
+
+3. Choose your **Node interpreter** from the detected installations.
+
+4. Select the global **ESLint package** from the dropdown.
+
+5. Leave Configuration File as **Automatic Search**.
+
+6. Check **Run eslint --fix on save**.
 
 ### Ensure the Prettier plugin is disabled if installed.
 
-1. Open Prettier configuration by going to File > Settings (Edit > Preferences on Mac) > Languages & Frameworks > Code Quality Tools > Prettier (optionally just search settings for "prettier")
-1. Uncheck both **On code reformat** and **On save**
-1. _Optional BUT IMPORTANT:_ If you have the Prettier extension enabled for other languages like CSS and HTML, turn it off for JS since we are doing it through Eslint already.
-   1. Make sure the **Run for files** glob does not include `js,ts,jsx,tsx`.
-   2. An example glob for styles, config, and markdown. `{**/*,*}.{yml,css,sass,md}`
+1. Open Prettier configuration by going to File > Settings (Edit > Preferences on Mac) > Languages & Frameworks > Code Quality Tools > Prettier (or search settings for "prettier").
 
-## With Typescript
+2. Uncheck both **On code reformat** and **On save**.
 
-Same instructions as above, just make sure you extend `wesbos/typescript` instead of just `wesbos`.
+3. If you have the Prettier extension enabled for other languages, such as CSS and HTML, turn it off for JS since we are handling it through ESLint.
 
-## With Yarn
+---
 
-It should just work! Open an issue if not.
-
-## With pnpm
-
-It should just work! Open an issue if not.
-
-## Issues with ESLint not formatting code
-
-If you experience issues with ESLint not formatting the code or you receive a `Parsing error: Cannot find module '@babel/preset-react` error message then you need to check that you opened the folder where you installed and configured ESLint directly in VS Code. The correct folder to open will be the one where you installed the `eslint-config-wesbos` npm package and where you created the `.eslintrc` file.
-
-Opening a parent folder or child folder in your code editor will cause ESLint to fail in finding the ESLint npm packages and the formatting won't work.
-
-```sh
-your-username
-  |
-  projects
-    |
-    beginner-javascript # <- Open this folder directly in your code editor
-      .eslintrc
-      package.json
-      node_modules/
-      exercises/
-      playground/
-```
+Feel free to customize these settings further based on your specific project requirements. If you have any questions or need further assistance, please don't hesitate to ask. Happy coding, Srijan!
