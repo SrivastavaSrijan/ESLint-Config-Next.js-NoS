@@ -1,6 +1,6 @@
 {
   "name": "eslint-config-nextjs-nos",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "ESLint and Prettier Config from Srijan Srivastava",
   "keywords": [
     "javascript",

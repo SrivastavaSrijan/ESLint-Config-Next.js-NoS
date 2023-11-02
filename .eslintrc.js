@@ -30,6 +30,18 @@ const config = {
       },
       parser: '@typescript-eslint/parser',
       rules: {
+        'prettier/prettier': [
+          'error',
+          {
+            semi: true,
+            singleQuote: true,
+            trailingComma: 'all',
+            tabWidth: 2,
+            printWidth: 80,
+            endOfLine: 'auto',
+          },
+        ],
+
         'react/destructuring-assignment': 'off', // Vscode doesn't support automatically destructuring, it's a pain to add a new variable
         'react/jsx-props-no-spreading': 'off', // _app.tsx uses spread operator and also, react-hook-form
         'simple-import-sort/imports': 'error', // Import configuration for `eslint-plugin-simple-import-sort`
