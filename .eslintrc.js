@@ -16,13 +16,11 @@ const config = {
       plugins: [
         '@typescript-eslint',
         'unused-imports',
-        'tailwindcss',
         'simple-import-sort',
       ],
       extends: [
         'next/core-web-vitals',
         'airbnb-typescript',
-        'plugin:tailwindcss/recommended',
         'plugin:prettier/recommended',
       ],
       parserOptions: {
@@ -68,7 +66,6 @@ const config = {
           },
         ],
         'no-underscore-dangle': 'off',
-        'tailwindcss/no-custom-classname': 'off',
         'import/prefer-default-export': 'off',
         // Since we use prettier for indents, we don't need these rules
         indent: 'off',
